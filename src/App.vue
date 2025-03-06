@@ -1,8 +1,18 @@
 <template>
-  <MainNav/>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <HomePage msg="NFL News"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <div class="body">
+    <div class="header">
+      <MainNav/>
+    </div>
+    <div class="content">
+      <HomePage msg="NFL News"/>
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,18 +24,11 @@ export default {
   name: 'App',
   components: {
     MainNav,
-    // HelloWorld,
     HomePage
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

@@ -15,7 +15,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.container {
-  border: 1px solid red;
-}
+
 </style>

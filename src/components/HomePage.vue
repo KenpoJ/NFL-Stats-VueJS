@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <h1>{{ msg }}</h1>
     <div>
-      <div v-for="article in news" :key="article.dataSourceIdentifier">
+      <h1>{{ msg }}</h1>
+      <div class="article" v-for="article in news" :key="article.dataSourceIdentifier">
         <img :src="article.images[0].url" alt="article image">
-        <h2><a :href="article.links.web.href">{{ article.headline }}</a></h2>
-        <p>{{ article.published }}</p>
-        <p>{{ article.byline }}</p>
+        <div class="article-content">
+          <h2><a :href="article.links.web.href">{{ article.headline }}</a></h2>
+          <p>{{ article.published }}</p>
+          <p>{{ article.byline }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -40,8 +42,34 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-.container {
-  border: 1px solid red;
+<style lang="scss">
+.content {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  .article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .article-content {
+      padding: 10px;
+      h2 {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
 }
 </style>
