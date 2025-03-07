@@ -1,34 +1,48 @@
 <template>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <div class="body">
-    <div class="header">
-      <MainNav/>
-    </div>
+  <div id="app">
+    <MainNav />
     <div class="content">
-      <HomePage msg="NFL News"/>
-    </div>
-    <div class="footer">
-      <p>Footer</p>
+      <div class="container">
+        <component :is="currentView" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { ref, computed, defineAsyncComponent } from 'vue'
 import MainNav from './components/MainNav.vue'
-// import HelloWorld from './components/HelloWorld.vue'
-import HomePage from './components/HomePage.vue'
 
 export default {
   name: 'App',
   components: {
-    MainNav,
-    HomePage
+    MainNav
+  },
+  setup() {
+    const routes = {
+      '/': defineAsyncComponent(() => import('./HomePage.vue')),
+      '/scores': defineAsyncComponent(() => import('./ScoresPage.vue')),
+      '/teams': defineAsyncComponent(() => import('./TeamsPage.vue')),
+      '/404': defineAsyncComponent(() => import('./NotFound.vue'))
+    }
+
+    const currentPath = ref(window.location.hash || '/')
+
+    window.addEventListener('hashchange', () => {
+      currentPath.value = window.location.hash || '/'
+    })
+
+    const currentView = computed(() => {
+      return routes[currentPath.value.slice(1)] || routes['/404']
+    })
+
+    return {
+      currentView
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
