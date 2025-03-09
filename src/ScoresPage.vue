@@ -1,1 +1,5 @@
-<template>Scores</template>
+<template>
+    <div class="container-scores">
+        Scores
+    </div>"
+</template>

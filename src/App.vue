@@ -2,9 +2,7 @@
   <div id="app">
     <MainNav />
     <div class="content">
-      <div class="container">
-        <component :is="currentView" />
-      </div>
+      <component :is="currentView" />
     </div>
   </div>
 </template>
@@ -26,18 +24,19 @@ export default {
       '/404': defineAsyncComponent(() => import('./NotFound.vue'))
     }
 
-    const currentPath = ref(window.location.hash || '/')
+    const currentPath = ref(window.location.hash ? window.location.hash.slice(1) : '/')
 
     window.addEventListener('hashchange', () => {
-      currentPath.value = window.location.hash || '/'
+      currentPath.value = window.location.hash ? window.location.hash.slice(1) : '/'
     })
 
     const currentView = computed(() => {
-      return routes[currentPath.value.slice(1)] || routes['/404']
+      return routes[currentPath.value] || routes['/404']
     })
 
     return {
-      currentView
+      currentView,
+      currentPath
     }
   }
 }

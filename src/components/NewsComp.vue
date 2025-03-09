@@ -1,12 +1,14 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <div class="inner-container">
-    <div class="article" v-for="article in news" :key="article.dataSourceIdentifier">
-      <img :src="article.images[0].url" alt="article image">
-      <div class="article-content">
-        <h2><a :href="article.links.web.href" target="_blank">{{ article.headline }}</a></h2>
-        <p>{{ article.published }}</p>
-        <p>{{ article.byline }}</p>
+  <div class="container-news">
+    <h1 class="heading-news">{{ msg }}</h1>
+    <div class="inner-container">
+      <div class="article" v-for="article in news" :key="article.dataSourceIdentifier">
+        <img :src="article.images[0].url" alt="article image">
+        <div class="article-content">
+          <h2><a :href="article.links.web.href" target="_blank">{{ article.headline }}</a></h2>
+          <p>{{ article.published }}</p>
+          <p>{{ article.byline }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -45,6 +47,10 @@ export default {
   width: 100%;
   display: flex;
   gap: 10px;
+}
+.heading-news {
+  margin: 0;
+  text-align: center;
 }
 .article {
   flex: 1 0 25%;

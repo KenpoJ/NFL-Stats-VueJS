@@ -9,7 +9,7 @@ body {
   height: 100vh;
 }
 
-.container {
+[class^="container"] {
   margin: 0 auto;
   width: 1200px;
   border: 1px solid red;

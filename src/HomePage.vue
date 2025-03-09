@@ -1,7 +1,20 @@
 <template>
+  <div class="container-home">
     <div class="news-container">
         <NewsComp />
     </div>
+  </div>
+  <div class="container">
+    <div class="column">
+        column one
+    </div>
+    <div class="column">
+        column two
+    </div>
+    <div class="column">
+        column three
+    </div>
+  </div>
 </template>
 
 <script>
@@ -32,5 +45,8 @@ export default {
       grid-column-end: span 3;
     }
   }
+}
+.container-news {
+  overflow: scroll;
 }
 </style>
